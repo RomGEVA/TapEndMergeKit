@@ -38,7 +38,7 @@ struct SettingsView: View {
                     SKStoreReviewController.requestReview()
                 }
                 MenuButton(title: "Privacy Policy", systemImage: "info.bubble.fill.rtl") {
-                    if let url = URL(string: "https://www.google.com") {
+                    if let url = URL(string: "https://www.termsfeed.com/live/13ae2b34-8446-4888-997f-32695f1b4eb4") {
                         UIApplication.shared.open(url)
                     }
                 }
