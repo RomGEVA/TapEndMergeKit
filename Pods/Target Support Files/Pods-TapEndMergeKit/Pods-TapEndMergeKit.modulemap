@@ -1,0 +1,6 @@
+framework module Pods_TapEndMergeKit {
+  umbrella header "Pods-TapEndMergeKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
