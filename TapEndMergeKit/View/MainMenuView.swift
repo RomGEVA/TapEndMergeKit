@@ -8,7 +8,7 @@ struct MainMenuView: View {
     @State private var showRules = false
     @State private var showLevels = false
     @StateObject private var viewModel = GameViewModel()
-    @State private var showOnboarding = false
+
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
     var body: some View {
@@ -81,15 +81,6 @@ struct MainMenuView: View {
                 RulesView()
                     .navigationBarBackButtonHidden()
             })
-            .fullScreenCover(isPresented: $showOnboarding) {
-                OnboardingView(showOnboarding: $showOnboarding)
-            }
-            .onAppear {
-                if !hasSeenOnboarding {
-                    showOnboarding = true
-                    hasSeenOnboarding = true
-                }
-            }
         }
     }
 }

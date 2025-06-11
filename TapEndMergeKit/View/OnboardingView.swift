@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var showOnboarding: Bool
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding: Bool?
     @State private var currentPage = 0
+    @State private var showMain: Bool = false
     
     let pages = [
         OnboardingPage(
@@ -34,7 +35,8 @@ struct OnboardingView: View {
                     Spacer()
                     Button("Skip") {
                         withAnimation {
-                            showOnboarding = false
+                            hasSeenOnboarding = true
+                            showMain = true
                         }
                     }
                     .foregroundColor(.white)
@@ -72,7 +74,8 @@ struct OnboardingView: View {
                         }
                     } else {
                         withAnimation {
-                            showOnboarding = false
+                            hasSeenOnboarding = true
+                            showMain = true
                         }
                     }
                 } label: {
@@ -94,6 +97,9 @@ struct OnboardingView: View {
                 .padding(.horizontal, 30)
                 .padding(.bottom, 30)
             }
+        }
+        .fullScreenCover(isPresented: $showMain) {
+            MainMenuView()
         }
     }
 }
@@ -148,5 +154,5 @@ struct OnboardingPageView: View {
 }
 
 #Preview {
-    OnboardingView(showOnboarding: .constant(true))
+    OnboardingView()
 } 
